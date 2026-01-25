@@ -6,6 +6,10 @@ project(${PROJECT_NAME})
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/files/reader.cpp
+    src/lang/parser.cpp
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 23)
+
+set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
