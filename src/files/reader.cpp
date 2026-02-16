@@ -1,11 +1,13 @@
 #include "reader.hpp"
 
-qlang::Reader::Reader(fs::path path)
+using namespace qlang;
+
+Reader::Reader(fs::path path)
  : path(path), ifs(path) {
 
 }
 
-std::optional<std::string> qlang::Reader::getLine(size_t line) {
+std::optional<std::string> Reader::getLine(size_t line) {
     if (!ifs.is_open()) return std::nullopt;
     if (line < 1) return "";
 
@@ -23,12 +25,12 @@ std::optional<std::string> qlang::Reader::getLine(size_t line) {
     return std::nullopt;
 }
 
-std::optional<std::string> qlang::Reader::getLine() {
+std::optional<std::string> Reader::getLine() {
     last_line++;
     return getLine(last_line);
 }
 
-size_t qlang::Reader::countLines() {
+size_t Reader::countLines() {
     if (!ifs.is_open()) return 0;
 
     size_t lines = std::count(
