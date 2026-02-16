@@ -1,10 +1,9 @@
 #include <print>
-#include "files/reader.hpp"
+#include "lang/parser.hpp"
 
 int main(int argc, char const *argv[]) {
-    qlang::Reader read("file.txt");
-    while (const auto& l = read.getLine()) {
-        std::println("{}", *l);
-    }
+    auto l = qlang::parser::Line("k1 k2 k3");
+    std::println("{}", l.getToken());
+    std::println("{}", l.getArgs());
     return 0;
 }
